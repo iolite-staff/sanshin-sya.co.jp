@@ -479,17 +479,36 @@ body {
 @media screen and (min-width: 1610px){
 	.bunner_area{
 		max-width: 450px;
+		top: 10%;
+		right: 10%;
 	}
 }
 @media screen and (min-width: 1465px) and (max-width: 1609px){
 	.bunner_area{
-		max-width: 330px;
+		max-width: 450px;
+		top: 10%;
+		right: 10%;
 	}
 }
 
-@media screen and (min-width: 900px) and (max-width: 1464px){
+@media screen and (min-width: 1100px) and (max-width: 1464px){
+	.bunner_area{
+		max-width: 450px;
+		top: 10%;
+	}
+}
+
+@media screen and (min-width: 950px) and (max-width: 1099px){
+	.bunner_area{
+		max-width: 330px;
+		top: 20%;
+	}
+}
+
+@media screen and (min-width: 900px) and (max-width: 949px){
 	.bunner_area{
 		max-width: 260px;
+		top: 25%;
 	}
 }
 
@@ -755,8 +774,8 @@ body {
 #sp_service .imgcnt2 img,
 #sp_service .imgcnt3 img {
 	width: 100%;
-    max-width: 690px;
-    margin: auto;
+	max-width: 690px;
+	margin: auto;
 }
 
 #sp_service .textcnt li {
@@ -1196,14 +1215,14 @@ a.privacy {
 }
 #sub_contents_area #sp_service ul.item li div.inner_contents div{
 	width:100%;
-    text-align:center;
-    margin:30px 0 0 0;
+	text-align:center;
+	margin:30px 0 0 0;
 	position:relative;
 }
 */
 
 
-/*    */
+/*	*/
 
 #home_sp_area ul.item li h3,
 #sub_contents_area #sp_service ul.item li h3 {
@@ -2142,7 +2161,7 @@ a.privacy {
 
 /*
 #sub_contents_area #print_service03 div.other_sevice_area div.other_sevice:not(:last-child){
-    border-bottom:#e4ebe7 1px solid;
+	border-bottom:#e4ebe7 1px solid;
 }
 */
 #sub_contents_area #print_service03 div.other_sevice_area div.other_sevice:nth-child(2n) {
@@ -2577,17 +2596,17 @@ a.privacy {
 
 /* policy */
 #sub_contents_area #biomass-ink .ink_detail{
-	align-items: center;
+	align-items: flex-start;
 }
 #sub_contents_area #biomass-ink .patent p{
 	padding: 5px 15px;
-    font-size: 18px;
-    width: 200px;
-    text-align: center;
-    border: solid 1px #009944;
-    background: #009944;
-    border-radius: 50px;
-    color: #FFF;
+	font-size: 18px;
+	width: 200px;
+	text-align: center;
+	border: solid 1px #009944;
+	background: #009944;
+	border-radius: 50px;
+	color: #FFF;
 }
 
 #sub_contents_area #policy_message div div {
@@ -2656,7 +2675,7 @@ a.privacy {
 	position: relative;
 	margin: 50px 0px;
 	max-height: 330px;
-    min-height: 110px;
+	min-height: 110px;
 }
 #sub_contents_area #ink div.ink_intro div.ink_detail_text div.ink_detail_features h4 {
 	background: white;
@@ -2669,10 +2688,10 @@ a.privacy {
 #sub_contents_area #ink div.ink_intro div.ink_detail_text div.ink_detail_features ul{
 	width: 100%;
 	border: black solid 1px;
-    padding: 30px;
-    position: absolute;
-    top: -40px;
-    z-index: -1;
+	padding: 30px;
+	position: absolute;
+	top: -40px;
+	z-index: -1;
 }
 
 #sub_contents_area #ink div.ink_intro div.ink_detail_text div.ink_detail_features ul li{
@@ -3116,8 +3135,8 @@ nav.inner_link ul li:not(:last-child) {
 }
 
 #narihira img.wide_img {
-    width: 88%;
-    max-width: 975px;
+	width: 88%;
+	max-width: 975px;
 }
 
 body>footer div.bg03:hover,
@@ -3155,9 +3174,9 @@ body>footer div.bg03{
 	width: 100%;
 	display: flex;
 	justify-content: center;
-    height: 400px;
-    margin: auto;
-    text-align: center;
+	height: 400px;
+	margin: auto;
+	text-align: center;
 	background-image: url(../img/recruit_bg.jpg);
 	background-size: cover;
 	background-position: center;
@@ -3166,9 +3185,9 @@ body>footer div.bg03{
 #recruit_contents .message p{
 	display: block;
 	box-sizing: border-box;
-    background: rgb(255 255 255 /0.8);
-    padding: 50px;
-    width: 100%;
+	background: rgb(255 255 255 /0.8);
+	padding: 50px;
+	width: 100%;
 	margin: auto;
 	max-width: 800px;
 }
@@ -3235,10 +3254,24 @@ body>footer div.bg03{
 	content: "";
 	position: absolute;
 	right: 0;
-    top: 50%;
-    transform: translate(-50%, -50%);
+	top: 50%;
+	transform: translate(-50%, -50%);
 	width: 40px;
 	height: 40px;
 	background-image: url(../img/interface/arrow_white_2.png);
 	background-size: cover;
+}
+.angle_circle{
+	background-color: #fe7f9c;
+	border-radius: 10px;
+	padding: 0 35px;
+}
+.patent_image{
+	margin-top: 5px;
+	border: 1px solid black;
+}
+#sub_contents_area #ink div.ink_intro .patent img{
+	width: 25%;
+	margin: 0 auto;
+	display: block;
 }

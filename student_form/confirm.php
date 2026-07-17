@@ -39,11 +39,11 @@
 		</a>
 	</h1>
 	<nav>
-        <ul>
+		<ul>
 			<li>
 				<a href="../company/">企業情報</a>
 				<ul class="menu_inner menu_inner_1">
-					<li><a href="../company/policy/">こだわり</a></li>
+					<li><a href="../company/biomass_mark/">バイオマス</a></li>
 					<li><a href="../company/csr/" class="small">CSR活動及び<br>コンプライアンス</a></li>
 					<li><a href="../company/facility/">事業所一覧</a></li>
 				</ul>
@@ -279,7 +279,7 @@
 				</div>
 			</form>
 		</div>
-    </section>
+	</section>
 
 </article>
 <footer>
@@ -318,7 +318,7 @@
 				<li><a href="../index.html">HOME</a></li>
 				<li><a href="../company/">企業情報</a>
 					<ul>
-						<li><a href="../company/policy/">こだわり</a></li>
+						<li><a href="../company/biomass_mark/">バイオマス</a></li>
 						<li><a href="../company/csr/" class="small">CSR活動及びコンプライアンス</a></li>
 						<li><a href="../company/facility/">事業所一覧</a></li>
 					</ul>

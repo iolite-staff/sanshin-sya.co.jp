@@ -11,134 +11,134 @@
 		}
 	}
 
-		require_once('./qdmail.php');
-		// 問い合わせフォーム内容送信先メールアドレス
-		$mailto = 'info@sanshinsya.co.jp';
-		//$mailto =  'staff@iolite.co.jp';
-		//$mailto =  'yuma.takemura@iolite.co.jp';
+	require_once('./qdmail.php');
+	// 問い合わせフォーム内容送信先メールアドレス
+	$mailto = 'info@sanshinsya.co.jp';
+	//$mailto =  'staff@iolite.co.jp';
+	//$mailto =  'yuma.takemura@iolite.co.jp';
 
-		//メール問い合わせ者メールアドレス
-		$mailfrom = $_POST['mail_address'];
+	//メール問い合わせ者メールアドレス
+	$mailfrom = $_POST['mail_address'];
 
 
 
-		//メールタイトル（管理者用）
-		if ($_POST['contact_type'] == "お問い合わせ") {
-			$admin_subject = "WEBフォームよりお問い合わせ";
-		} else {
-			$admin_subject = "WEBフォーム見積依頼";
-		}
+	//メールタイトル（管理者用）
+	if ($_POST['contact_type'] == "お問い合わせ") {
+		$admin_subject = "WEBフォームよりお問い合わせ";
+	} else {
+		$admin_subject = "WEBフォーム見積依頼";
+	}
 
-		//メールタイトル（お問い合わせ送信者用）
-		if ($_POST['contact_type'] == "お問い合わせ") {
-			$sender_subject = "【株式会社三進社】 お問い合わせを承りました。（自動返信）";
-		} else {
-			$sender_subject = "【株式会社三進社】 お見積依頼を承りました。（自動返信）";
-		}
+	//メールタイトル（お問い合わせ送信者用）
+	if ($_POST['contact_type'] == "お問い合わせ") {
+		$sender_subject = "【株式会社三進社】 お問い合わせを承りました。（自動返信）";
+	} else {
+		$sender_subject = "【株式会社三進社】 お見積依頼を承りました。（自動返信）";
+	}
 
-		//問い合わせ内容生成
-		if($_POST['contact_type'] == "お問い合わせ"){
+	//問い合わせ内容生成
+	if($_POST['contact_type'] == "お問い合わせ"){
 
-			$consultation_items = implode('、',$_POST['consultation_item']);
+		$consultation_items = implode('、',$_POST['consultation_item']);
 
-			$content = <<< EOF
-			お問い合わせ区分: {$_POST['contact_category']}
-			相談したい項目: {$consultation_items}
-			ご予算: {$_POST['budget']}
-			その他:
-			{$_POST['message']}
+		$content = <<< EOF
+お問い合わせ区分: {$_POST['contact_category']}
+相談したい項目: {$consultation_items}
+ご予算: {$_POST['budget']}
+その他:
+{$_POST['message']}
 
-			会社名（氏名）: {$_POST['company_name']}
-			住所: {$_POST['address']}
-			メールアドレス: {$_POST['mail_address']}
-			お電話番号: {$_POST['telephone_number']}
-			FAX番号: {$_POST['fax_number']}
+会社名（氏名）: {$_POST['company_name']}
+住所: {$_POST['address']}
+メールアドレス: {$_POST['mail_address']}
+お電話番号: {$_POST['telephone_number']}
+FAX番号: {$_POST['fax_number']}
 
-			アンケート：{$_POST['enquete']}
-
-			EOF;
-		}else{
-
-			$content = <<< EOF
-			部数: {$_POST['num']}
-			サイズ: {$_POST['size']}
-			大判及び変形サイズ: {$_POST['deformed_size']}
-			ページ数: {$_POST['page_count']}
-			表紙色数: {$_POST['cover_color_num']}
-			本文色数: {$_POST['color_num']}
-			製本体裁: {$_POST['binding_style']}
-			表紙用紙: {$_POST['cover_paper']}
-			表紙紙色: {$_POST['cover_color']}
-			本文用紙: {$_POST['book_paper']}
-			中扉: {$_POST['frontispiece']}
-			中扉紙色: {$_POST['frontispiece_color']}
-			見返し: {$_POST['endpaper']}
-			ニス: {$_POST['varnish']}
-			PP貼加工: {$_POST['processing']}
-			原稿種別: {$_POST['manuscript_type']}
-			OS: {$_POST['os_type']}
-			使用アプリケーション: {$_POST['application']}
-			その他:
-			{$_POST['message']}
-
-			氏名: {$_POST['name']}
-			メールアドレス: {$_POST['mail_address']}
-			ご住所: {$_POST['address']}
-			お電話番号: {$_POST['telephone_number']}
-			FAX番号: {$_POST['fax_number']}
-
-			EOF;
-		}
-
-		//メール内容（管理者用）
-		$admin_content = <<< EOF
-		下記のお問い合わせが入っております。
-
-		{$content}
-		EOF;
-
-		//メール内容（お問い合わせ送信者用）
-		$sender_content = <<< EOF
+アンケート：{$_POST['enquete']}
 
 		EOF;
+	}else{
 
-		// Check if $_POST['name'] is empty
-		if (!empty($_POST['name'])) {
-			$sender_content .= <<< EOF
-			{$_POST['name']}様
+		$content = <<< EOF
+部数: {$_POST['num']}
+サイズ: {$_POST['size']}
+大判及び変形サイズ: {$_POST['deformed_size']}
+ページ数: {$_POST['page_count']}
+表紙色数: {$_POST['cover_color_num']}
+本文色数: {$_POST['color_num']}
+製本体裁: {$_POST['binding_style']}
+表紙用紙: {$_POST['cover_paper']}
+表紙紙色: {$_POST['cover_color']}
+本文用紙: {$_POST['book_paper']}
+中扉: {$_POST['frontispiece']}
+中扉紙色: {$_POST['frontispiece_color']}
+見返し: {$_POST['endpaper']}
+ニス: {$_POST['varnish']}
+PP貼加工: {$_POST['processing']}
+原稿種別: {$_POST['manuscript_type']}
+OS: {$_POST['os_type']}
+使用アプリケーション: {$_POST['application']}
+その他:
+{$_POST['message']}
+
+氏名: {$_POST['name']}
+メールアドレス: {$_POST['mail_address']}
+ご住所: {$_POST['address']}
+お電話番号: {$_POST['telephone_number']}
+FAX番号: {$_POST['fax_number']}
 
 		EOF;
-		} else {
-			$sender_content .= <<< EOF
-			{$_POST['company_name']} 様
+	}
 
-		EOF;
-		}
+	//メール内容（管理者用）
+	$admin_content = <<< EOF
+下記のお問い合わせが入っております。
 
+{$content}
+	EOF;
+
+	//メール内容（お問い合わせ送信者用）
+	$sender_content = <<< EOF
+
+	EOF;
+
+	// Check if $_POST['name'] is empty
+	if (!empty($_POST['name'])) {
 		$sender_content .= <<< EOF
+{$_POST['name']}様
 
-		この度はお問い合わせありがとうございます。
-		後ほど担当者からご回答を差し上げますので、今しばらくお待ちください。
-		------------------------------------------------------------
-		{$content}
+	EOF;
+	} else {
+		$sender_content .= <<< EOF
+{$_POST['company_name']} 様
 
-		今後とも株式会社三進社をよろしくお願いいたします。
+	EOF;
+	}
 
-		────────────────────────────────────
-		株式会社　三　進　社
-		〒135-0042
-		東京都江東区木場6-6-3
-		TEL/03-5617-3550　FAX/03-5617-3553
-		info@sanshinsya.co.jp
-		https://www.sanshin-sya.co.jp/
-		────────────────────────────────────
-		EOF;
+	$sender_content .= <<< EOF
 
-		//管理者にメール
-		qd_send_mail( 'text' , $mailto , $admin_subject , $admin_content , $mailfrom );
+この度はお問い合わせありがとうございます。
+後ほど担当者からご回答を差し上げますので、今しばらくお待ちください。
+------------------------------------------------------------
+{$content}
 
-		//お問い合わせ送信者にメール
-		qd_send_mail( 'text' , $mailfrom , $sender_subject , $sender_content , $mailto );
+今後とも株式会社三進社をよろしくお願いいたします。
+
+────────────────────────────────────
+株式会社　三　進　社
+〒135-0042
+東京都江東区木場6-6-3
+TEL/03-5617-3550　FAX/03-5617-3553
+info@sanshinsya.co.jp
+https://www.sanshin-sya.co.jp/
+────────────────────────────────────
+	EOF;
+
+	//管理者にメール
+	qd_send_mail( 'text' , $mailto , $admin_subject , $admin_content , $mailfrom );
+
+	//お問い合わせ送信者にメール
+	qd_send_mail( 'text' , $mailfrom , $sender_subject , $sender_content , $mailto );
 
 
 ?>
@@ -169,11 +169,11 @@
 		</a>
 	</h1>
 	<nav>
-        <ul>
+		<ul>
 			<li>
 				<a href="../company/">企業情報</a>
 				<ul class="menu_inner">
-					<li><a href="../company/policy/">こだわり</a></li>
+					<li><a href="../company/biomass_mark/">バイオマス</a></li>
 					<li><a href="../company/csr/" class="small">CSR活動及び<br>コンプライアンス</a></li>
 					<li><a href="../company/facility/">事業所一覧</a></li>
 				</ul>
@@ -428,7 +428,7 @@
 				<a href="../index.html" class="btn">戻る</a>
 			</div>
 		</div>
-    </section>
+	</section>
 
 </article>
 <footer>
@@ -459,7 +459,7 @@
 				<li><a href="../index.html">HOME</a></li>
 				<li><a href="../company/">企業情報</a>
 					<ul>
-						<li><a href="../company/policy/">こだわり</a></li>
+						<li><a href="../company/biomass_mark/">バイオマス</a></li>
 						<li><a href="../company/csr/" class="small">CSR活動及びコンプライアンス</a></li>
 						<li><a href="../company/facility/">事業所一覧</a></li>
 					</ul>

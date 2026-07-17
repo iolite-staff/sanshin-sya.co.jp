@@ -17,39 +17,39 @@
 <script type="text/javascript" src="./lib/jquery/jquery-3.7.1.min.js"></script>
 <script>
 $(function () {
-  const $topicsArea = $('#home_topics_area');
-  const $p = $topicsArea.find('p');
-  const pText = $p.text().replace(/\s|　/g, ''); // テキストのみ取得（空判定用）
-  const brCount = $p.html().split('<br>').length - 1; // <br>の数をカウント
+	const $topicsArea = $('#home_topics_area');
+	const $p = $topicsArea.find('p');
+	const pText = $p.text().replace(/\s|　/g, ''); // テキストのみ取得（空判定用）
+	const brCount = $p.html().split('<br>').length - 1; // <br>の数をカウント
 
-  if (pText.length > 0) {
-    $topicsArea.css('display', 'block');
+	if (pText.length > 0) {
+		$topicsArea.css('display', 'block');
 
-    // <br>数によってmargin-bottomを変える
-    let marginBottom;
-    switch (true) {
-      case brCount === 0:
-        marginBottom = '70px';
-        break;
-      case brCount === 1:
-        marginBottom = '95px';
-        break;
-      case brCount === 2:
-        marginBottom = '110px';
-        break;
-      default:
-        marginBottom = '135px';
-    }
+		// <br>数によってmargin-bottomを変える
+		let marginBottom;
+		switch (true) {
+			case brCount === 0:
+				marginBottom = '70px';
+				break;
+			case brCount === 1:
+				marginBottom = '95px';
+				break;
+			case brCount === 2:
+				marginBottom = '110px';
+				break;
+			default:
+				marginBottom = '135px';
+		}
 
-    $('.bunner_area').css('margin-bottom', marginBottom);
+		$('.bunner_area').css('margin-bottom', marginBottom);
 
-    // デバイス幅が990px以下の時だけ高さ変更
-    if (window.innerWidth <= 990) {
-      $('#home_key_area').css('height', '650px');
-    }
-  } else {
-    $topicsArea.css('display', 'none');
-  }
+		// デバイス幅が990px以下の時だけ高さ変更
+		if (window.innerWidth <= 990) {
+			$('#home_key_area').css('height', '650px');
+		}
+	} else {
+		$topicsArea.css('display', 'none');
+	}
 });
 </script>
 </head>
@@ -65,7 +65,7 @@ $(function () {
 			<li>
 				<a href="./company/">企業情報</a>
 				<ul class="menu_inner menu_inner_1">
-					<li><a href="./company/policy/">こだわり</a></li>
+					<li><a href="./company/biomass_mark/">バイオマス</a></li>
 					<li><a href="./company/csr/" class="small">CSR活動及び<br class="pc">コンプライアンス</a></li>
 					<li><a href="./company/facility/">事業所一覧</a></li>
 				</ul>
@@ -92,7 +92,7 @@ $(function () {
 </header>
 <article id="home_key_area">
 	<p class="catchcopy">
-		<span>三進社は、</span><br><span>『こだわりを持ち、<br class="sp">モノづくりに誇りを持っている』</span><br><span>総合印刷会社です。</span>
+		<span style="font-weight:bold;font-size:larger;font-family:'HelveticaNeue',Arial,'NotoSansJP','HiraginoKakuGothicProN','HiraginoSans','BIZUDPGothic',Meiryo,sans-serif;">バイオマス印刷の<br class="sp">三進社</span><br><span style="font-weight:bold;font-size:smaller;font-family:'HelveticaNeue',Arial,'NotoSansJP','HiraginoKakuGothicProN','HiraginoSans','BIZUDPGothic',Meiryo,sans-serif;">印刷物で</span><br><span style="font-weight:bold;font-size:smaller;font-family:'HelveticaNeue',Arial,'NotoSansJP','HiraginoKakuGothicProN','HiraginoSans','BIZUDPGothic',Meiryo,sans-serif;">環境への取組み対策を<br class="sp">お手伝いします！</span>
 	</p>
 <!-- TOPICS掲載内容がないときは<p>タグ内を空にすると自動的に非表示になります -->
 	<div id="home_topics_area">
@@ -101,13 +101,13 @@ $(function () {
 	</div>
 
 	<div class="bunner_area">
-		<a href="./company/policy/index.html#biomass-ink"><img src="./img/bunner.png" alt="バナー"></a>
+		<a href="./company/biomass_mark/"><img src="./img/biomass_patent.png" alt="バイオマス　使用部位：印刷インキ　No.240121"></a>
 	</div>
 
 </article>
 <article id="home_welcome_area">
-	<p>
-		常により良い未来を創造する印刷会社を目指します！
+	<p style="font-weight:bold;">
+		私たちは、バイオマスマークで<br>「魅せるサステナビリティ」を提案します
 	</p>
 </article>
 <article id="home_service_area">
@@ -213,9 +213,9 @@ $(function () {
 	<h2>Skill and Quality<span></span></h2>
 	<ul class="list">
 		<li>
-			<a href="./company/policy/">
-				<span>インクのおはなし</span>
-				<img src="./img/saq_pic01.jpg" alt="インク">
+			<a href="./company/biomass_mark/#ink">
+				<span>オリジナルインク　ラインナップ</span>
+				<img src="./img/saq_pic01.jpg" alt="オリジナルインク　ラインナップ">
 				<p>
 					当社では、印刷物が製品になったあとに起こりうる事故を防ぐために、インキメーカーと共同開発で独自のオリジナル墨インキを開発し使用しています。
 				</p>
@@ -274,7 +274,7 @@ $(function () {
 				<li><a href="#">HOME</a></li>
 				<li><a href="./company/">企業情報</a>
 					<ul>
-						<li><a href="./company/policy/">こだわり</a></li>
+						<li><a href="./company/biomass_mark/">バイオマス</a></li>
 						<li><a href="./company/csr/">CSR活動及びコンプライアンス</a></li>
 						<li><a href="./company/facility/">事業所一覧</a></li>
 					</ul>

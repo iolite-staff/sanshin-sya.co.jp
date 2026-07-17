@@ -218,10 +218,10 @@ body>footer div.bg03 a{
 	position: relative;
 	z-index: 1;
 	text-shadow:
-    -1px -1px 0 black,
-     1px -1px 0 black,
-    -1px  1px 0 black,
-     1px  1px 0 black;
+	-1px -1px 0 black,
+	 1px -1px 0 black,
+	-1px  1px 0 black,
+	 1px  1px 0 black;
 }
 body>footer div.bg03 span{
 	font-size: 16px;
@@ -229,7 +229,7 @@ body>footer div.bg03 span{
 }
 body>footer ul.bnr li a p::before{
 	content: "";
-    position: absolute;
+	position: absolute;
 	top: 38%;
 	background: rgba(0, 0, 0, 0.6);
 	height: 32px;
@@ -243,16 +243,16 @@ body>footer div.bg03{
 }
 body>footer div.bg03 div{
 	line-height: 0.8;
-    align-items: center;
-    margin: auto;
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+	align-items: center;
+	margin: auto;
+	position: absolute;
+	top: 40%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
 body>footer div.bg03 p{
 	margin: 0;
-    margin-bottom: 15px;
+	margin-bottom: 15px;
 }
 
 body>footer div.bg03 p::before{
@@ -267,8 +267,8 @@ body>footer div.bg03 p::before{
 	border-radius: 5px;
 }
 @media screen and (min-width: 426px),(max-width: 949px){
-	    body>footer ul.bnr li a p, body>footer div.bg03 a {
-        font-size: 28px;
+	body>footer ul.bnr li a p, body>footer div.bg03 a {
+		font-size: 28px;
 	}
 }
 #footer_nav_area {

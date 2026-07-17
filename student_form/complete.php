@@ -11,110 +11,110 @@
 		}
 	}
 
-		require_once('./qdmail.php');
-		//フォーム内容送信先メールアドレス
-		$mailto = 'info@sanshinsya.co.jp';
-		//$mailto =  'staff@iolite.co.jp';
-		//$mailto =  'yuma.takemura@iolite.co.jp';
+	require_once('./qdmail.php');
+	//フォーム内容送信先メールアドレス
+	$mailto = 'info@sanshinsya.co.jp';
+	//$mailto =  'staff@iolite.co.jp';
+	//$mailto =  'yuma.takemura@iolite.co.jp';
 
-		//メール問い合わせ者メールアドレス
-		$mailfrom = $_POST['email'];
-
-
-
-		//メールタイトル（管理者用）
-		$admin_subject = "学生専用申し込みWEBフォームより申し込み";
-
-		//メールタイトル（お問い合わせ送信者用）
-		$sender_subject = "【株式会社三進社】 申し込み承りました。（自動返信）";
-
-		//納品日の希望時間帯がない場合は着希望を表示しない
-		if($_POST['deliverytime'] == '指定なし'){
-			$deliveryTimeNeed = '' ;
-		}else{
-			$deliveryTimeNeed = '着希望';
-		}
-		//色扉が無しの場合は表示しない
-		if($_POST['door-need'] == '無'){
-			$doors = '無' ;
-		}else{
-			$doors = '有（'.$_POST['door-num'].'）枚';
-			$doorsColor = '色扉の色: '.$_POST['door-color'];
-		}
-
-		//申込内容生成
-		$content = <<< EOF
-		お名前: {$_POST['family-name']}　{$_POST['given-name']}
-		フリガナ: {$_POST['family-name-furi']}　{$_POST['given-name-furi']}
-		学年: {$_POST['age']}
-		電話番号: {$_POST['tel1']}-{$_POST['tel2']}-{$_POST['tel3']}
-		メールアドレス: {$_POST['email']}
-		品名: {$_POST['product']}
-		ページ数: {$_POST['page']}
-		部数: {$_POST['busuu']}
-		納品日: {$_POST['delivery']}（時間帯：{$_POST['deliverytime']}）$deliveryTimeNeed
-		表紙の色: {$_POST['cover']}
-		色扉の有無: $doors
-		$doorsColor
-
-		商品発送先
-		　郵便番号: {$_POST['postal-code']}
-		　住所: {$_POST['address']}
-		　宛名: {$_POST['recipient']}
-
-		請求書送付先
-		　郵便番号: {$_POST['bill-postal-code']}
-		　住所: {$_POST['bill-address']}
-		　宛名: {$_POST['bill-recipient']}
-		　電話番号: {$_POST['bill-tel1']}-{$_POST['bill-tel2']}-{$_POST['bill-tel3']}
+	//メール問い合わせ者メールアドレス
+	$mailfrom = $_POST['email'];
 
 
-		EOF;
-	
 
-		//メール内容（管理者用）
-		$admin_content = <<< EOF
-		下記の学生申し込みが入っております。
+	//メールタイトル（管理者用）
+	$admin_subject = "学生専用申し込みWEBフォームより申し込み";
 
-		{$content}
-		EOF;
+	//メールタイトル（お問い合わせ送信者用）
+	$sender_subject = "【株式会社三進社】 申し込み承りました。（自動返信）";
 
-		//メール内容（お問い合わせ送信者用）
-		$sender_content = <<< EOF
+	//納品日の希望時間帯がない場合は着希望を表示しない
+	if($_POST['deliverytime'] == '指定なし'){
+		$deliveryTimeNeed = '' ;
+	}else{
+		$deliveryTimeNeed = '着希望';
+	}
+	//色扉が無しの場合は表示しない
+	if($_POST['door-need'] == '無'){
+		$doors = '無' ;
+	}else{
+		$doors = '有（'.$_POST['door-num'].'）枚';
+		$doorsColor = '色扉の色: '.$_POST['door-color'];
+	}
 
-		EOF;
+	//申込内容生成
+	$content = <<< EOF
+お名前: {$_POST['family-name']}　{$_POST['given-name']}
+フリガナ: {$_POST['family-name-furi']}　{$_POST['given-name-furi']}
+学年: {$_POST['age']}
+電話番号: {$_POST['tel1']}-{$_POST['tel2']}-{$_POST['tel3']}
+メールアドレス: {$_POST['email']}
+品名: {$_POST['product']}
+ページ数: {$_POST['page']}
+部数: {$_POST['busuu']}
+納品日: {$_POST['delivery']}（時間帯：{$_POST['deliverytime']}）$deliveryTimeNeed
+表紙の色: {$_POST['cover']}
+色扉の有無: $doors
+$doorsColor
 
-		// Check if $_POST['family-name'] is empty
-		$sender_content .= <<< EOF
-		{$_POST['family-name']}　{$_POST['given-name']}様
+商品発送先
+　郵便番号: {$_POST['postal-code']}
+　住所: {$_POST['address']}
+　宛名: {$_POST['recipient']}
 
-		この度は学生申し込みいただき、ありがとうございました。
+請求書送付先
+　郵便番号: {$_POST['bill-postal-code']}
+　住所: {$_POST['bill-address']}
+　宛名: {$_POST['bill-recipient']}
+　電話番号: {$_POST['bill-tel1']}-{$_POST['bill-tel2']}-{$_POST['bill-tel3']}
 
 
-		お申し込み内容
-		------------------------------------------------------------
-		{$content}
+	EOF;
 
-		今後とも株式会社三進社をよろしくお願いいたします。
 
-		────────────────────────────────────
-		株式会社　三　進　社
-		〒135-0042
-		東京都江東区木場6-6-3
-		TEL/03-5617-3550　FAX/03-5617-3553
-		info@sanshinsya.co.jp
-		https://www.sanshin-sya.co.jp/
-		────────────────────────────────────
-		EOF;
+	//メール内容（管理者用）
+	$admin_content = <<< EOF
+下記の学生申し込みが入っております。
 
-		// Check if $_POST['family-name'] is empty
-		if (!empty($_POST['family-name'])) {
+{$content}
+	EOF;
+
+	//メール内容（お問い合わせ送信者用）
+	$sender_content = <<< EOF
+
+	EOF;
+
+	// Check if $_POST['family-name'] is empty
+	$sender_content .= <<< EOF
+{$_POST['family-name']}　{$_POST['given-name']}様
+
+この度は学生申し込みいただき、ありがとうございました。
+
+
+お申し込み内容
+------------------------------------------------------------
+{$content}
+
+今後とも株式会社三進社をよろしくお願いいたします。
+
+────────────────────────────────────
+株式会社　三　進　社
+〒135-0042
+東京都江東区木場6-6-3
+TEL/03-5617-3550　FAX/03-5617-3553
+info@sanshinsya.co.jp
+https://www.sanshin-sya.co.jp/
+────────────────────────────────────
+	EOF;
+
+	// Check if $_POST['family-name'] is empty
+	if (!empty($_POST['family-name'])) {
 		//管理者にメール
 		qd_send_mail( 'text' , $mailto , $admin_subject , $admin_content , $mailfrom );
 
 		//お問い合わせ送信者にメール
 		qd_send_mail( 'text' , $mailfrom , $sender_subject , $sender_content , $mailto );
-		}
+	}
 
 
 ?>
@@ -145,11 +145,11 @@
 		</a>
 	</h1>
 	<nav>
-        <ul>
+		<ul>
 			<li>
 				<a href="../company/">企業情報</a>
 				<ul class="menu_inner">
-					<li><a href="../company/policy/">こだわり</a></li>
+					<li><a href="../company/biomass_mark/">バイオマス</a></li>
 					<li><a href="../company/csr/" class="small">CSR活動及び<br>コンプライアンス</a></li>
 					<li><a href="../company/facility/">事業所一覧</a></li>
 				</ul>
@@ -376,7 +376,7 @@
 				<a href="../" class="btn">戻る</a>
 			</div>
 		</div>
-    </section>
+	</section>
 
 </article>
 <footer>
@@ -415,7 +415,7 @@
 				<li><a href="../index.html">HOME</a></li>
 				<li><a href="../company/">企業情報</a>
 					<ul>
-						<li><a href="../company/policy/">こだわり</a></li>
+						<li><a href="../company/policy/">バイオマス</a></li>
 						<li><a href="../company/csr/" class="small">CSR活動及びコンプライアンス</a></li>
 						<li><a href="../company/facility/">事業所一覧</a></li>
 					</ul>

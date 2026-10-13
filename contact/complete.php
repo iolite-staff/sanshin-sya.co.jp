@@ -56,7 +56,7 @@ FAX番号: {$_POST['fax_number']}
 
 アンケート：{$_POST['enquete']}
 
-		EOF;
+EOF;
 	}else{
 
 		$content = <<< EOF
@@ -87,7 +87,7 @@ OS: {$_POST['os_type']}
 お電話番号: {$_POST['telephone_number']}
 FAX番号: {$_POST['fax_number']}
 
-		EOF;
+EOF;
 	}
 
 	//メール内容（管理者用）
@@ -95,24 +95,24 @@ FAX番号: {$_POST['fax_number']}
 下記のお問い合わせが入っております。
 
 {$content}
-	EOF;
+EOF;
 
 	//メール内容（お問い合わせ送信者用）
 	$sender_content = <<< EOF
 
-	EOF;
+EOF;
 
 	// Check if $_POST['name'] is empty
 	if (!empty($_POST['name'])) {
 		$sender_content .= <<< EOF
 {$_POST['name']}様
 
-	EOF;
+EOF;
 	} else {
 		$sender_content .= <<< EOF
 {$_POST['company_name']} 様
 
-	EOF;
+EOF;
 	}
 
 	$sender_content .= <<< EOF
@@ -132,7 +132,7 @@ TEL/03-5617-3550　FAX/03-5617-3553
 info@sanshinsya.co.jp
 https://www.sanshin-sya.co.jp/
 ────────────────────────────────────
-	EOF;
+EOF;
 
 	//管理者にメール
 	qd_send_mail( 'text' , $mailto , $admin_subject , $admin_content , $mailfrom );
